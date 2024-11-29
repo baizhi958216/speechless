@@ -6,3 +6,6 @@
 <img src="./zh-cn/Nuxtjs.png" style="zoom:50%"  />
 <img src="./zh-cn/React.png" style="zoom:50%"  />
 <img src="./zh-cn/Vite.png" style="zoom:50%"  />
+<img src="./zh-cn/Cpp.png" style="zoom:50%"  />
+<img src="./zh-cn/JAVA.png" style="zoom:50%"  />
+<img src="./zh-cn/Solon.png" style="zoom:50%"  />
