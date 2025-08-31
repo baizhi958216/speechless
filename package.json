@@ -10,6 +10,8 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@zumer/snapdom": "^1.9.9",
+    "gsap": "^3.13.0",
     "nuxt": "^4.0.3",
     "vue": "^3.5.20",
     "vue-router": "^4.5.1"
