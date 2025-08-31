@@ -1,6 +1,6 @@
 <template>
   <ClientOnly>
-    <div>
+    <div class="mb-2rem">
       <velocity :texts="['无语😅，和你说不下去💧典型的耄耋思维🤗😅😅', '🧩点击图片上传图片', '💧可以拖动', '✏️文字也可以编辑']" :velocity="100" :damping="50"
         :stiffness="400" :velocity-mapping="{ input: [0, 1000], output: [0, 5] }" class-name="md:text-30px"
         parallax-class-name="custom-parallax" scroller-class-name="custom-scroller" />
@@ -49,14 +49,30 @@ const openFileDialog = () => {
   const input = document.createElement('input')
   input.type = 'file'
   input.accept = 'image/*'
+  input.multiple = false
+  
+  // iOS兼容性处理
+  input.style.position = 'absolute'
+  input.style.left = '-9999px'
+  input.style.opacity = '0'
+  
   input.onchange = (event: Event) => {
     const target = event.target as HTMLInputElement
     const file = target.files?.[0]
     if (file && file.type.startsWith('image/')) {
       processImageFile(file)
     }
+    // 清理DOM元素
+    document.body.removeChild(input)
   }
-  input.click()
+  
+  // 添加到DOM中再触发点击（iOS需要）
+  document.body.appendChild(input)
+  
+  // 使用setTimeout确保元素已添加到DOM
+  setTimeout(() => {
+    input.click()
+  }, 100)
 }
 
 const processImageFile = (file: File) => {
